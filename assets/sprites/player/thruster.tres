@@ -1,0 +1,25 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://did781hd12x14"]
+
+[ext_resource type="Texture2D" uid="uid://bf3jj488yfg23" path="res://assets/sprites/player/turbo_blue.png" id="1_o3aag"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qhqgy"]
+atlas = ExtResource("1_o3aag")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dqkch"]
+atlas = ExtResource("1_o3aag")
+region = Rect2(48, 0, 48, 48)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qhqgy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dqkch")
+}],
+"loop": true,
+"name": &"burn",
+"speed": 5.0
+}]

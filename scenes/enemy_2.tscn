@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://16nludloqee6"]
+
+[ext_resource type="Script" uid="uid://re2pbw3h7fsh" path="res://scripts/enemy.gd" id="1_fi5i3"]
+[ext_resource type="SpriteFrames" uid="uid://b52sgvsg18v5f" path="res://assets/sprites/enemy/enemy_2.tres" id="2_fi5i3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_md0e3"]
+size = Vector2(38, 20)
+
+[node name="Enemy" type="CharacterBody2D" unique_id=328591072]
+texture_filter = 1
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_fi5i3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1283136684]
+sprite_frames = ExtResource("2_fi5i3")
+autoplay = "default"
+frame_progress = 0.10071662
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1270287465]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_md0e3")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1312098387]
+
+[node name="ShootTimer" type="Timer" parent="." unique_id=1555113657]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]

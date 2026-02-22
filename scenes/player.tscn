@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://bdcsc2cyr24p1"]
+
+[ext_resource type="Texture2D" uid="uid://erych0wve2pn" path="res://assets/sprites/player/ship_1.png" id="1_3vyb7"]
+[ext_resource type="Script" uid="uid://bmtw7fd5mpxk1" path="res://scripts/player.gd" id="1_qhqgy"]
+[ext_resource type="PackedScene" uid="uid://bmogca460rblw" path="res://scenes/player_bullet.tscn" id="2_dqkch"]
+[ext_resource type="SpriteFrames" uid="uid://did781hd12x14" path="res://assets/sprites/player/thruster.tres" id="2_g2els"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
+size = Vector2(45, 30)
+
+[node name="Player" type="CharacterBody2D" unique_id=1256303353]
+texture_filter = 1
+script = ExtResource("1_qhqgy")
+bullet_scene = ExtResource("2_dqkch")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2027913644]
+scale = Vector2(1.5, 1.0833334)
+texture = ExtResource("1_3vyb7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=610983179]
+position = Vector2(-0.5, 6)
+shape = SubResource("RectangleShape2D_g2els")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1850354850]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=649467097]
+position = Vector2(-17, 30)
+sprite_frames = ExtResource("2_g2els")
+animation = &"burn"
+autoplay = "burn"
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="." unique_id=1938186133]
+position = Vector2(21, 30)
+sprite_frames = ExtResource("2_g2els")
+animation = &"burn"
+autoplay = "burn"
+
+[node name="Muzzle" type="Marker2D" parent="." unique_id=1742605178]
+position = Vector2(0, -10)
+
+[node name="ShootTimer" type="Timer" parent="." unique_id=592881809]
+
+[node name="PowerupTimer" type="Timer" parent="." unique_id=1337303728]
+
+[node name="MuzzleLeft" type="Marker2D" parent="." unique_id=1502283502]
+position = Vector2(-14, -15)
+
+[node name="MuzzleRight" type="Marker2D" parent="." unique_id=60539301]
+position = Vector2(14, -15)
+
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]
