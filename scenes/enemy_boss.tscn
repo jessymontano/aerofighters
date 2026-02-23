@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://boss001"]
+
+[ext_resource type="Script" uid="uid://nb7v54ksc3mu" path="res://scripts/enemy_boss.gd" id="1_boss"]
+[ext_resource type="PackedScene" uid="uid://cvoyd2kgj8d22" path="res://scenes/enemy_bullet.tscn" id="2_boss"]
+[ext_resource type="PackedScene" uid="uid://bga84bi3wrkcv" path="res://scenes/enemy_bullet_2.tscn" id="3_boss"]
+[ext_resource type="Texture2D" uid="uid://cb7xbxjign3c" path="res://assets/sprites/enemy/large_enemy_01.png" id="4_boss"]
+[ext_resource type="AudioStream" uid="uid://cmjd88spr6cya" path="res://assets/audio/enemy_shoot.ogg" id="5_pxn6j"]
+[ext_resource type="AudioStream" uid="uid://csnvlkinh08lk" path="res://assets/audio/explode.ogg" id="6_1ofvn"]
+
+[sub_resource type="RectangleShape2D" id="col"]
+size = Vector2(80, 50)
+
+[sub_resource type="RectangleShape2D" id="body_col"]
+size = Vector2(78, 48)
+
+[node name="EnemyBoss" type="CharacterBody2D" unique_id=1672189569]
+texture_filter = 1
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("1_boss")
+bullet_scene_2 = ExtResource("3_boss")
+bullet_scene = ExtResource("2_boss")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1416083438]
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("4_boss")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1173097820]
+shape = SubResource("col")
+
+[node name="PlayerDetector" type="Area2D" parent="." unique_id=498314719]
+collision_layer = 0
+
+[node name="DetectorShape" type="CollisionShape2D" parent="PlayerDetector" unique_id=1695239560]
+shape = SubResource("body_col")
+
+[node name="ShootTimer" type="Timer" parent="." unique_id=1896641866]
+
+[node name="ShootSFX" type="AudioStreamPlayer2D" parent="." unique_id=1832946202]
+stream = ExtResource("5_pxn6j")
+
+[node name="ExplodeSFX" type="AudioStreamPlayer2D" parent="." unique_id=170207692]
+stream = ExtResource("6_1ofvn")
+
+[connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]

@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://game2001"]
+
+[ext_resource type="Script" uid="uid://nsk5qjnffcqn" path="res://scripts/level.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://5ellyqg3p5fo" path="res://assets/sprites/bg/bg1.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://cbwcwbqjd3klr" path="res://assets/sprites/bg/bg2.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://dxj218vmp3r77" path="res://assets/sprites/bg/bg3.png" id="4"]
+[ext_resource type="PackedScene" uid="uid://bdcsc2cyr24p1" path="res://scenes/player.tscn" id="5"]
+[ext_resource type="Script" uid="uid://cm68qvfoquk6u" path="res://scripts/enemy_spawner.gd" id="6"]
+[ext_resource type="PackedScene" uid="uid://cxmetxhrv0odt" path="res://scenes/enemy.tscn" id="7"]
+[ext_resource type="PackedScene" uid="uid://16nludloqee6" path="res://scenes/enemy_2.tscn" id="8"]
+[ext_resource type="PackedScene" uid="uid://boss001" path="res://scenes/enemy_boss.tscn" id="9"]
+[ext_resource type="PackedScene" uid="uid://hud001" path="res://scenes/hud.tscn" id="10"]
+[ext_resource type="PackedScene" uid="uid://pause001" path="res://scenes/pause_menu.tscn" id="11"]
+[ext_resource type="AudioStream" uid="uid://dnl3qrbibiwyx" path="res://assets/audio/soundtrack.ogg" id="12_glh1a"]
+
+[node name="Game2" type="Node2D" unique_id=1242744570]
+script = ExtResource("1")
+level_number = 2
+
+[node name="Background" type="Node2D" parent="." unique_id=1603214884]
+
+[node name="layer1" type="Parallax2D" parent="Background" unique_id=1328875019]
+repeat_size = Vector2(0, 640)
+autoscroll = Vector2(0, 130)
+ignore_camera_scroll = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/layer1" unique_id=1527200053]
+texture_filter = 1
+texture = ExtResource("2")
+centered = false
+
+[node name="layer2" type="Parallax2D" parent="Background" unique_id=141128278]
+scroll_scale = Vector2(1, 0.5)
+repeat_size = Vector2(0, 640)
+autoscroll = Vector2(0, 80)
+ignore_camera_scroll = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/layer2" unique_id=2084844443]
+texture_filter = 1
+texture = ExtResource("3")
+centered = false
+
+[node name="layer3" type="Parallax2D" parent="Background" unique_id=1297360284]
+repeat_size = Vector2(0, 640)
+autoscroll = Vector2(0, 100)
+ignore_camera_scroll = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/layer3" unique_id=1204014614]
+texture_filter = 1
+texture = ExtResource("4")
+centered = false
+
+[node name="World" type="Node2D" parent="." unique_id=909076394]
+
+[node name="Player" type="Node2D" parent="World" unique_id=1191067424]
+
+[node name="player" parent="World/Player" unique_id=1275651350 instance=ExtResource("5")]
+position = Vector2(180, 580)
+
+[node name="EnemySpawner" type="Node" parent="World" unique_id=834023489]
+script = ExtResource("6")
+enemy_1_scene = ExtResource("7")
+enemy_2_scene = ExtResource("8")
+boss_scene = ExtResource("9")
+
+[node name="HUD" parent="." unique_id=692267822 instance=ExtResource("10")]
+
+[node name="PauseMenu" parent="." unique_id=415788296 instance=ExtResource("11")]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1981479953]
+stream = ExtResource("12_glh1a")
+parameters/looping = true

@@ -1,29 +1,49 @@
 [gd_scene format=3 uid="uid://16nludloqee6"]
 
-[ext_resource type="Script" uid="uid://re2pbw3h7fsh" path="res://scripts/enemy.gd" id="1_fi5i3"]
-[ext_resource type="SpriteFrames" uid="uid://b52sgvsg18v5f" path="res://assets/sprites/enemy/enemy_2.tres" id="2_fi5i3"]
+[ext_resource type="Script" uid="uid://bv22uoe3e4y6s" path="res://scripts/enemy_fast.gd" id="1_fi5i3"]
+[ext_resource type="PackedScene" uid="uid://cvoyd2kgj8d22" path="res://scenes/enemy_bullet.tscn" id="2_fi5i3"]
+[ext_resource type="SpriteFrames" uid="uid://b52sgvsg18v5f" path="res://assets/sprites/enemy/enemy_2.tres" id="3_fi5i3"]
+[ext_resource type="AudioStream" uid="uid://cmjd88spr6cya" path="res://assets/audio/enemy_shoot.ogg" id="4_k4auq"]
+[ext_resource type="AudioStream" uid="uid://csnvlkinh08lk" path="res://assets/audio/explode.ogg" id="5_fdqbe"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_md0e3"]
+[sub_resource type="RectangleShape2D" id="col"]
 size = Vector2(38, 20)
 
-[node name="Enemy" type="CharacterBody2D" unique_id=328591072]
+[sub_resource type="RectangleShape2D" id="body_col"]
+size = Vector2(36, 18)
+
+[node name="Enemy" type="CharacterBody2D" unique_id=833069256]
 texture_filter = 1
 collision_layer = 2
-collision_mask = 5
+collision_mask = 4
 script = ExtResource("1_fi5i3")
+bullet_scene = ExtResource("2_fi5i3")
+shoot_interval = 1.0
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1283136684]
-sprite_frames = ExtResource("2_fi5i3")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=334583271]
+sprite_frames = ExtResource("3_fi5i3")
 autoplay = "default"
-frame_progress = 0.10071662
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1270287465]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2112130573]
 position = Vector2(0, 1)
-shape = SubResource("RectangleShape2D_md0e3")
+shape = SubResource("col")
 
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1312098387]
+[node name="PlayerDetector" type="Area2D" parent="." unique_id=286811542]
+collision_layer = 0
 
-[node name="ShootTimer" type="Timer" parent="." unique_id=1555113657]
+[node name="DetectorShape" type="CollisionShape2D" parent="PlayerDetector" unique_id=1637498854]
+shape = SubResource("body_col")
 
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=752539002]
+
+[node name="ShootTimer" type="Timer" parent="." unique_id=1838090326]
+
+[node name="ShootSFX" type="AudioStreamPlayer2D" parent="." unique_id=1921110559]
+stream = ExtResource("4_k4auq")
+
+[node name="ExplodeSFX" type="AudioStreamPlayer2D" parent="." unique_id=1067818162]
+stream = ExtResource("5_fdqbe")
+
+[connection signal="body_entered" from="PlayerDetector" to="." method="_on_player_detector_body_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
 [connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]

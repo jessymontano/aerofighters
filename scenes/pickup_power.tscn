@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://brt14cu1na6y4"]
+
+[ext_resource type="Script" uid="uid://mgunopw0tm1y" path="res://scripts/pickup.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://b26ikx4b6rtjq" path="res://assets/ui/icon-powerup.png" id="2"]
+[ext_resource type="AudioStream" uid="uid://cmx1p72iekrwu" path="res://assets/audio/powerup.ogg" id="3_rtdkc"]
+
+[sub_resource type="CircleShape2D" id="col"]
+
+[node name="PickupPower" type="Area2D" unique_id=253912558]
+collision_layer = 16
+script = ExtResource("1")
+pickup_type = "power"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=939763650]
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=727937501]
+shape = SubResource("col")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=183586739]
+stream = ExtResource("3_rtdkc")

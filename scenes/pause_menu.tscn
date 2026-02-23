@@ -1,0 +1,99 @@
+[gd_scene format=3 uid="uid://pause001"]
+
+[ext_resource type="Script" uid="uid://d1ben6bhxgwil" path="res://scripts/pause_menu.gd" id="1"]
+[ext_resource type="FontFile" uid="uid://4ncq5b6ymaxm" path="res://assets/fonts/PeaberryMono.woff2" id="2_kukqi"]
+[ext_resource type="Texture2D" uid="uid://cinn6id2blmnj" path="res://assets/ui/Metal Buttons Text.png" id="3_5d2l8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7l7mv"]
+atlas = ExtResource("3_5d2l8")
+region = Rect2(481, 129, 94, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v4r4p"]
+atlas = ExtResource("3_5d2l8")
+region = Rect2(385, 129, 94, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kukqi"]
+atlas = ExtResource("3_5d2l8")
+region = Rect2(64, 193, 64, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5d2l8"]
+atlas = ExtResource("3_5d2l8")
+region = Rect2(0, 193, 64, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1s2dm"]
+atlas = ExtResource("3_5d2l8")
+region = Rect2(481, 193, 94, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_88e76"]
+atlas = ExtResource("3_5d2l8")
+region = Rect2(385, 193, 94, 30.16858)
+
+[node name="PauseMenu" type="CanvasLayer" unique_id=1526690518]
+process_mode = 3
+layer = 10
+script = ExtResource("1")
+
+[node name="Overlay" type="ColorRect" parent="." unique_id=1285659948]
+process_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 0.65)
+
+[node name="VBox" type="VBoxContainer" parent="." unique_id=497238925]
+process_mode = 3
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.3
+anchor_right = 0.5
+anchor_bottom = 0.75
+offset_left = -110.0
+offset_right = 110.0
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="PausedLbl" type="Label" parent="VBox" unique_id=1263077203]
+process_mode = 3
+layout_mode = 2
+theme_override_colors/font_color = Color(0.2, 0.9, 1, 1)
+theme_override_fonts/font = ExtResource("2_kukqi")
+theme_override_font_sizes/font_size = 26
+text = "— PAUSED —"
+horizontal_alignment = 1
+
+[node name="Sep" type="Control" parent="VBox" unique_id=877694429]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+
+[node name="ResumeButton" type="TextureButton" parent="." unique_id=1203272485]
+offset_left = 85.0
+offset_top = 271.0
+offset_right = 179.0
+offset_bottom = 302.0
+scale = Vector2(2, 2)
+texture_normal = SubResource("AtlasTexture_7l7mv")
+texture_pressed = SubResource("AtlasTexture_v4r4p")
+
+[node name="QuitButton" type="TextureButton" parent="." unique_id=1290383303]
+offset_left = 118.0
+offset_top = 408.0
+offset_right = 182.0
+offset_bottom = 438.0
+scale = Vector2(2, 2)
+texture_normal = SubResource("AtlasTexture_kukqi")
+texture_pressed = SubResource("AtlasTexture_5d2l8")
+
+[node name="MenuButton" type="TextureButton" parent="." unique_id=1392003550]
+offset_left = 85.0
+offset_top = 340.0
+offset_right = 181.0
+offset_bottom = 370.0
+scale = Vector2(2, 2)
+texture_normal = SubResource("AtlasTexture_1s2dm")
+texture_pressed = SubResource("AtlasTexture_88e76")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1555870793]
+
+[connection signal="pressed" from="ResumeButton" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="MenuButton" to="." method="_on_menu_pressed"]

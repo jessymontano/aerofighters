@@ -10,11 +10,15 @@ config_version=5
 
 [application]
 
-config/name="aerofighters"
+config/name="Aerofighters"
 config/version="1.0.0"
-run/main_scene="uid://xx8c8gujgguv"
+run/main_scene="res://scenes/main_menu.tscn"
 config/features=PackedStringArray("4.6", "GL Compatibility")
-config/icon="uid://bw1y2w1pbm1cm"
+config/icon="res://assets/sprites/player/ship_1.png"
+
+[autoload]
+
+GameManager="*res://scripts/game_manager.gd"
 
 [display]
 
@@ -55,14 +59,12 @@ shoot={
 
 2d_physics/layer_1="player"
 2d_physics/layer_2="enemy"
-2d_physics/layer_3="bullet"
-
-[physics]
-
-3d/physics_engine="Jolt Physics"
+2d_physics/layer_3="player_bullet"
+2d_physics/layer_4="enemy_bullet"
 
 [rendering]
 
-rendering_device/driver.windows="d3d12"
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+2d/snap/snap_2d_transforms_to_pixel=true

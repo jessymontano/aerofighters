@@ -1,0 +1,289 @@
+[gd_scene format=3 uid="uid://d0t6vudpqquui"]
+
+[ext_resource type="Script" uid="uid://b0kvimavc7s3j" path="res://scripts/main_menu.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://5ellyqg3p5fo" path="res://assets/sprites/bg/bg1.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://cbwcwbqjd3klr" path="res://assets/sprites/bg/bg2.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://dxj218vmp3r77" path="res://assets/sprites/bg/bg3.png" id="4"]
+[ext_resource type="FontFile" uid="uid://4ncq5b6ymaxm" path="res://assets/fonts/PeaberryMono.woff2" id="5_8ln24"]
+[ext_resource type="Texture2D" uid="uid://bkhysdi2jcekm" path="res://assets/ui/Metal Buttons Icons.png" id="6_oa1go"]
+[ext_resource type="Texture2D" uid="uid://cinn6id2blmnj" path="res://assets/ui/Metal Buttons Text.png" id="6_rtw2f"]
+[ext_resource type="AudioStream" uid="uid://ctx6ps5v7l725" path="res://assets/audio/select.ogg" id="8_tbmy8"]
+
+[sub_resource type="SystemFont" id="pixel_font"]
+font_names = PackedStringArray("Courier New", "Courier", "monospace")
+antialiasing = 0
+
+[sub_resource type="Theme" id="menu_theme"]
+default_font = SubResource("pixel_font")
+default_font_size = 14
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ajci"]
+atlas = ExtResource("6_oa1go")
+region = Rect2(128, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7b55j"]
+atlas = ExtResource("6_oa1go")
+region = Rect2(96, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5pajh"]
+atlas = ExtResource("6_oa1go")
+region = Rect2(128, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j7ex8"]
+atlas = ExtResource("6_oa1go")
+region = Rect2(96, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5dd4i"]
+atlas = ExtResource("6_oa1go")
+region = Rect2(128, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lgwnu"]
+atlas = ExtResource("6_oa1go")
+region = Rect2(96, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_flqon"]
+atlas = ExtResource("6_oa1go")
+region = Rect2(128, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rcqid"]
+atlas = ExtResource("6_oa1go")
+region = Rect2(96, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rtw2f"]
+atlas = ExtResource("6_rtw2f")
+region = Rect2(64, 193, 64, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jk1qb"]
+atlas = ExtResource("6_rtw2f")
+region = Rect2(0, 193, 64, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oa1go"]
+atlas = ExtResource("6_rtw2f")
+region = Rect2(64, 0, 64, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tbmy8"]
+atlas = ExtResource("6_rtw2f")
+region = Rect2(0, 0, 64, 31)
+
+[node name="MainMenu" type="Control" unique_id=1482147198]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = SubResource("menu_theme")
+script = ExtResource("1")
+
+[node name="Background" type="Node2D" parent="." unique_id=158831987]
+
+[node name="layer1" type="Parallax2D" parent="Background" unique_id=52116038]
+repeat_size = Vector2(0, 640)
+autoscroll = Vector2(0, 100)
+ignore_camera_scroll = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/layer1" unique_id=144200246]
+texture_filter = 1
+texture = ExtResource("2")
+centered = false
+
+[node name="layer2" type="Parallax2D" parent="Background" unique_id=1187071136]
+scroll_scale = Vector2(1, 0.5)
+repeat_size = Vector2(0, 640)
+autoscroll = Vector2(0, 60)
+ignore_camera_scroll = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/layer2" unique_id=895393821]
+texture = ExtResource("3")
+centered = false
+
+[node name="layer3" type="Parallax2D" parent="Background" unique_id=384300263]
+repeat_size = Vector2(0, 640)
+autoscroll = Vector2(0, 80)
+ignore_camera_scroll = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/layer3" unique_id=451057920]
+texture = ExtResource("4")
+centered = false
+
+[node name="DimOverlay" type="ColorRect" parent="." unique_id=1251483790]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 0.5)
+
+[node name="VBox" type="VBoxContainer" parent="." unique_id=1678198100]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.03
+anchor_right = 0.5
+anchor_bottom = 0.97
+offset_left = -130.0
+offset_right = 130.0
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Title" type="Label" parent="VBox" unique_id=513225837]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(0.2, 0.9, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_8ln24")
+theme_override_font_sizes/font_size = 30
+text = "AERO FIGHTERS"
+horizontal_alignment = 1
+
+[node name="Sep1" type="Control" parent="VBox" unique_id=1144197384]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+
+[node name="SelectLbl" type="Label" parent="VBox" unique_id=1343805700]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 1)
+theme_override_fonts/font = ExtResource("5_8ln24")
+theme_override_font_sizes/font_size = 12
+text = "-- SELECT FIGHTER --"
+horizontal_alignment = 1
+
+[node name="ShipRow" type="HBoxContainer" parent="VBox" unique_id=833681557]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="PrevButton" type="TextureButton" parent="VBox/ShipRow" unique_id=1936284512]
+layout_mode = 2
+size_flags_vertical = 4
+texture_normal = SubResource("AtlasTexture_1ajci")
+texture_pressed = SubResource("AtlasTexture_7b55j")
+flip_h = true
+
+[node name="Preview" type="TextureRect" parent="VBox/ShipRow" unique_id=1073773146]
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 2
+stretch_mode = 5
+
+[node name="NextButton" type="TextureButton" parent="VBox/ShipRow" unique_id=713074455]
+layout_mode = 2
+size_flags_vertical = 4
+texture_normal = SubResource("AtlasTexture_5pajh")
+texture_pressed = SubResource("AtlasTexture_j7ex8")
+
+[node name="ShipName" type="Label" parent="VBox" unique_id=569196707]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.3, 1, 0.5, 1)
+theme_override_fonts/font = ExtResource("5_8ln24")
+theme_override_font_sizes/font_size = 15
+text = "Fighter I"
+horizontal_alignment = 1
+
+[node name="Sep2" type="Control" parent="VBox" unique_id=522563116]
+custom_minimum_size = Vector2(0, 4)
+layout_mode = 2
+
+[node name="LevelSelectLbl" type="Label" parent="VBox" unique_id=1975388571]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 1)
+theme_override_fonts/font = ExtResource("5_8ln24")
+theme_override_font_sizes/font_size = 12
+text = "-- SELECT LEVEL --"
+horizontal_alignment = 1
+
+[node name="LevelRow" type="HBoxContainer" parent="VBox" unique_id=726723388]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="LevelPrevButton" type="TextureButton" parent="VBox/LevelRow" unique_id=1667802595]
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_5dd4i")
+texture_pressed = SubResource("AtlasTexture_lgwnu")
+flip_h = true
+
+[node name="LevelLabel" type="Label" parent="VBox/LevelRow" unique_id=898887045]
+custom_minimum_size = Vector2(100, 34)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.85, 0.2, 1)
+theme_override_fonts/font = ExtResource("5_8ln24")
+theme_override_font_sizes/font_size = 16
+text = "LEVEL 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LevelNextButton" type="TextureButton" parent="VBox/LevelRow" unique_id=1532248167]
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_flqon")
+texture_pressed = SubResource("AtlasTexture_rcqid")
+
+[node name="Sep3" type="Control" parent="VBox" unique_id=1769521275]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="Sep4" type="Control" parent="VBox" unique_id=1600080311]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+
+[node name="ControlsLbl" type="Label" parent="VBox" unique_id=133405161]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(0.55, 0.55, 0.55, 1)
+theme_override_fonts/font = ExtResource("5_8ln24")
+theme_override_font_sizes/font_size = 10
+text = "MOVE: Arrows   SHOOT: X   PAUSE: ESC"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="VBox" unique_id=182825898]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_8ln24")
+text = "CREATED BY:"
+horizontal_alignment = 1
+
+[node name="QuitButton" type="TextureButton" parent="." unique_id=956489998]
+layout_mode = 0
+offset_left = 115.0
+offset_top = 430.0
+offset_right = 186.0
+offset_bottom = 460.0
+scale = Vector2(2, 2)
+texture_normal = SubResource("AtlasTexture_rtw2f")
+texture_pressed = SubResource("AtlasTexture_jk1qb")
+
+[node name="StartButton" type="TextureButton" parent="." unique_id=45501082]
+layout_mode = 0
+offset_left = 115.0
+offset_top = 365.0
+offset_right = 183.5
+offset_bottom = 396.0
+scale = Vector2(2, 2)
+texture_normal = SubResource("AtlasTexture_oa1go")
+texture_pressed = SubResource("AtlasTexture_tbmy8")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=811703771]
+stream = ExtResource("8_tbmy8")
+
+[node name="Label" type="Label" parent="." unique_id=1131428206]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 554.0
+offset_right = 296.0
+offset_bottom = 571.0
+theme_override_fonts/font = ExtResource("5_8ln24")
+text = "Elda Berenice Matus Valencia"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="." unique_id=801183440]
+layout_mode = 0
+offset_left = 88.0
+offset_top = 577.0
+offset_right = 265.0
+offset_bottom = 594.0
+theme_override_fonts/font = ExtResource("5_8ln24")
+text = "Jessica Montaño Lares"
+
+[connection signal="pressed" from="VBox/ShipRow/PrevButton" to="." method="_on_prev_pressed"]
+[connection signal="pressed" from="VBox/ShipRow/NextButton" to="." method="_on_next_pressed"]
+[connection signal="pressed" from="VBox/LevelRow/LevelPrevButton" to="." method="_on_level_prev_pressed"]
+[connection signal="pressed" from="VBox/LevelRow/LevelNextButton" to="." method="_on_level_next_pressed"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="StartButton" to="." method="_on_start_pressed"]

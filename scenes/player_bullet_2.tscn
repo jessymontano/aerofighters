@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://pbullet2_01"]
+
+[ext_resource type="Script" path="res://scripts/player_bullet.gd" id="1_pb2"]
+[ext_resource type="Texture2D" path="res://assets/sprites/player/bullet_2.png" id="2_pb2"]
+
+[sub_resource type="CapsuleShape2D" id="col"]
+radius = 6.0
+height = 8.0
+
+[node name="PlayerBullet2" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_pb2")
+damage = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_pb2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("col")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+
+[connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]

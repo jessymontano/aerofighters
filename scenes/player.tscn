@@ -4,48 +4,58 @@
 [ext_resource type="Script" uid="uid://bmtw7fd5mpxk1" path="res://scripts/player.gd" id="1_qhqgy"]
 [ext_resource type="PackedScene" uid="uid://bmogca460rblw" path="res://scenes/player_bullet.tscn" id="2_dqkch"]
 [ext_resource type="SpriteFrames" uid="uid://did781hd12x14" path="res://assets/sprites/player/thruster.tres" id="2_g2els"]
+[ext_resource type="AudioStream" uid="uid://b6i7kbmthihmx" path="res://assets/audio/shoot.ogg" id="3_sfx"]
+[ext_resource type="AudioStream" uid="uid://bh5cpjny2dx61" path="res://assets/audio/hit.ogg" id="4_sfx"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
+[sub_resource type="RectangleShape2D" id="col"]
 size = Vector2(45, 30)
 
-[node name="Player" type="CharacterBody2D" unique_id=1256303353]
-texture_filter = 1
+[node name="Player" type="CharacterBody2D" unique_id=1220458762]
+collision_mask = 8
 script = ExtResource("1_qhqgy")
 bullet_scene = ExtResource("2_dqkch")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2027913644]
-scale = Vector2(1.5, 1.0833334)
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=160005104]
+scale = Vector2(1.5, 1.083)
 texture = ExtResource("1_3vyb7")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=610983179]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=900178519]
 position = Vector2(-0.5, 6)
-shape = SubResource("RectangleShape2D_g2els")
+shape = SubResource("col")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1850354850]
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=649467097]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1393331567]
 position = Vector2(-17, 30)
 sprite_frames = ExtResource("2_g2els")
 animation = &"burn"
 autoplay = "burn"
 
-[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="." unique_id=1938186133]
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="." unique_id=2142067593]
 position = Vector2(21, 30)
 sprite_frames = ExtResource("2_g2els")
 animation = &"burn"
 autoplay = "burn"
 
-[node name="Muzzle" type="Marker2D" parent="." unique_id=1742605178]
+[node name="Muzzle" type="Marker2D" parent="." unique_id=1368004311]
 position = Vector2(0, -10)
 
-[node name="ShootTimer" type="Timer" parent="." unique_id=592881809]
+[node name="ShootTimer" type="Timer" parent="." unique_id=1166678818]
+one_shot = true
 
-[node name="PowerupTimer" type="Timer" parent="." unique_id=1337303728]
+[node name="PowerupTimer" type="Timer" parent="." unique_id=442902507]
+one_shot = true
 
-[node name="MuzzleLeft" type="Marker2D" parent="." unique_id=1502283502]
-position = Vector2(-14, -15)
+[node name="InvincibleTimer" type="Timer" parent="." unique_id=516436439]
+wait_time = 1.2
+one_shot = true
 
-[node name="MuzzleRight" type="Marker2D" parent="." unique_id=60539301]
-position = Vector2(14, -15)
+[node name="ShootSFX" type="AudioStreamPlayer2D" parent="." unique_id=1656172704]
+stream = ExtResource("3_sfx")
+volume_db = -5.0
+
+[node name="HitSFX" type="AudioStreamPlayer2D" parent="." unique_id=1486235252]
+stream = ExtResource("4_sfx")
+volume_db = -3.0
 
 [connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]
+[connection signal="timeout" from="PowerupTimer" to="." method="_on_powerup_timer_timeout"]
+[connection signal="timeout" from="InvincibleTimer" to="." method="_on_invincible_timer_timeout"]

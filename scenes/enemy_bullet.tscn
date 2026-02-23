@@ -1,26 +1,54 @@
 [gd_scene format=3 uid="uid://cvoyd2kgj8d22"]
 
-[ext_resource type="Script" uid="uid://d1y55w0e8c6p2" path="res://scripts/player_bullet.gd" id="1_qx7rs"]
-[ext_resource type="Texture2D" uid="uid://ctlcbxc6qb5rn" path="res://assets/sprites/enemy/enemy_bullet.png" id="2_qx7rs"]
+[ext_resource type="Script" uid="uid://dpre2nnpwp5hy" path="res://scripts/enemy_bullet.gd" id="1_eb"]
+[ext_resource type="Texture2D" uid="uid://ctlcbxc6qb5rn" path="res://assets/sprites/enemy/enemy_bullet.png" id="2_eb"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_46jqs"]
-radius = 2.0
-height = 22.0
+[sub_resource type="AtlasTexture" id="AtlasTexture_qx7rs"]
+atlas = ExtResource("2_eb")
+region = Rect2(0, 0, 6, 21)
 
-[node name="EnemyBullet" type="Area2D" unique_id=972940899]
+[sub_resource type="AtlasTexture" id="AtlasTexture_38r62"]
+atlas = ExtResource("2_eb")
+region = Rect2(6, 0, 6, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ckxic"]
+atlas = ExtResource("2_eb")
+region = Rect2(12, 0, 6, 21)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_02qb5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qx7rs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_38r62")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ckxic")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="col"]
+radius = 2.5
+height = 20.0
+
+[node name="EnemyBullet" type="Area2D" unique_id=51911698]
 texture_filter = 1
-collision_layer = 4
-script = ExtResource("1_qx7rs")
+collision_layer = 8
+script = ExtResource("1_eb")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=474336600]
-shape = SubResource("CapsuleShape2D_46jqs")
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." unique_id=380423991]
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=93920113]
-texture = ExtResource("2_qx7rs")
-hframes = 3
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1063402511]
+sprite_frames = SubResource("SpriteFrames_02qb5")
+autoplay = "default"
+frame_progress = 0.46680135
 
-[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." unique_id=415980035]
-position = Vector2(3, 0)
-rect = Rect2(-5, -10, 4, 21)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1842377785]
+shape = SubResource("col")
 
 [connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]

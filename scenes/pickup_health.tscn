@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://eauyot4u6t6u"]
+
+[ext_resource type="Script" uid="uid://mgunopw0tm1y" path="res://scripts/pickup.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://dudsg8htnfaht" path="res://assets/ui/icon-health.png" id="2"]
+[ext_resource type="AudioStream" uid="uid://cmx1p72iekrwu" path="res://assets/audio/powerup.ogg" id="3_twsja"]
+
+[sub_resource type="CircleShape2D" id="col"]
+
+[node name="PickupHealth" type="Area2D" unique_id=133150394]
+collision_layer = 16
+script = ExtResource("1")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1257885026]
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=706222883]
+shape = SubResource("col")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=210612949]
+stream = ExtResource("3_twsja")

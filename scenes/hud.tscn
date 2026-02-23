@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://hud001"]
+
+[ext_resource type="Script" uid="uid://cftcv0qpffyg7" path="res://scripts/hud.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://dguyy7e2xieni" path="res://assets/ui/health.png" id="2_5ysmq"]
+[ext_resource type="Texture2D" uid="uid://iae0obh8ly0s" path="res://assets/ui/health_bar.png" id="3_6fi6k"]
+
+[node name="HUD" type="CanvasLayer" unique_id=1801299355]
+script = ExtResource("1")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=713595761]
+texture_filter = 1
+offset_left = 5.0
+offset_top = 606.0
+offset_right = 59.0
+offset_bottom = 618.0
+scale = Vector2(2, 2)
+texture = ExtResource("2_5ysmq")
+stretch_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TextureRect" unique_id=1425014270]
+custom_minimum_size = Vector2(30, 5)
+layout_mode = 0
+offset_left = 1.0
+offset_top = 6.0
+offset_right = 52.0
+offset_bottom = 11.0
+
+[node name="TextureRect" type="TextureRect" parent="TextureRect/HBoxContainer" unique_id=474009112]
+custom_minimum_size = Vector2(14, 5)
+layout_mode = 2
+texture = ExtResource("3_6fi6k")
+
+[node name="TextureRect2" type="TextureRect" parent="TextureRect/HBoxContainer" unique_id=1993133924]
+custom_minimum_size = Vector2(14, 0)
+layout_mode = 2
+texture = ExtResource("3_6fi6k")
+
+[node name="TextureRect3" type="TextureRect" parent="TextureRect/HBoxContainer" unique_id=1923046172]
+custom_minimum_size = Vector2(15, 0)
+layout_mode = 2
+texture = ExtResource("3_6fi6k")
